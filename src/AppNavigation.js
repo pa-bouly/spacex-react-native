@@ -4,27 +4,65 @@ import {
   createAppContainer,
   createBottomTabNavigator
 } from "react-navigation";
+
 import LaunchScreen from "./screens/LaunchScreen";
+import StarshipsScreen from "./screens/starships/StarshipsScreen";
+import RocketsScreen from "./screens/starships/RocketsScreen";
+import RocketDetailsScreen from "./screens/starships/RocketDetailsScreen";
+import DragonsScreen from "./screens/starships/DragonsScreen";
+import DragonDetailsScreen from "./screens/starships/DragonDetailsScreen";
+import ShipsScreen from "./screens/starships/ShipsScreen";
+import ShipDetailsScreen from "./screens/starships/ShipDetailsScreen";
+
 import { Colors } from "./themes";
 
 import Icon from "react-native-vector-icons/Entypo";
 
-// Manifest of possible screens
 const PrimaryNav = createStackNavigator(
   {
-    LaunchScreen: { screen: LaunchScreen }
+    LaunchScreen: { screen: LaunchScreen },
+    StarshipsScreen: { screen: StarshipsScreen }
   },
   {
-    // Default config for all screens
     headerMode: "none",
     initialRouteName: "LaunchScreen",
     navigationOptions: {}
   }
 );
 
+const StarshipsNav = createStackNavigator(
+  {
+    StarshipsScreen: { screen: StarshipsScreen },
+    RocketsScreen: { screen: RocketsScreen },
+    RocketDetailsScreen: { screen: RocketDetailsScreen },
+
+    DragonsScreen: { screen: DragonsScreen },
+    DragonDetailsScreen: { screen: DragonDetailsScreen },
+
+    ShipsScreen: { screen: ShipsScreen },
+    ShipDetailsScreen: { screen: ShipDetailsScreen }
+  },
+  {
+    initialRouteName: "StarshipsScreen"
+  }
+);
+
+StarshipsNav.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible
+  };
+};
+
 export default createAppContainer(
   createBottomTabNavigator(
     {
+      Starships: StarshipsNav,
       Home: PrimaryNav
       //Others
     },
@@ -46,6 +84,7 @@ export default createAppContainer(
           return <Icon name={iconName} size={40} color={Colors.panther} />;
         }
       }),
+      initialRouteName: "Home",
       tabBarOptions: {
         activeTintColor: Colors.fire,
         inactiveTintColor: Colors.panther

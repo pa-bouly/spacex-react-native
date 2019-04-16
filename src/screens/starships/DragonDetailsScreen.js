@@ -1,15 +1,16 @@
 import React from "react";
-import { Text, View, ActivityIndicator } from "react-native";
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { Text, View, ActivityIndicator, ScrollView, Image } from "react-native";
 
-export default class LaunchScreen extends React.Component {
+export default class DragonDetailsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isLoading: true };
   }
 
   componentDidMount() {
-    return fetch("https://api.spacexdata.com/v3/launches/next")
+    const dragonId = this.props.navigation.getParam("dragon_id", "dragon1");
+
+    return fetch("https://api.spacexdata.com/v3/dragons/" + dragonId)
       .then(response => response.json())
       .then(responseJson => {
         this.setState(
@@ -33,13 +34,16 @@ export default class LaunchScreen extends React.Component {
         </View>
       );
     } else {
-      console.log(this.state.dataSource);
       return (
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <Text>Home!</Text>
-          <Text>{this.state.dataSource.mission_name}</Text>
+          <Image
+            source={{ uri: this.state.dataSource.flickr_images[0] }}
+            style={{ width: 200, height: 200 }}
+          />
+
+          <Text>{this.state.dataSource.name}</Text>
         </View>
       );
     }

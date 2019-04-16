@@ -1,15 +1,16 @@
 import React from "react";
-import { Text, View, ActivityIndicator } from "react-native";
-import { createBottomTabNavigator, createAppContainer } from "react-navigation";
+import { Text, View, ActivityIndicator, ScrollView, Image } from "react-native";
 
-export default class LaunchScreen extends React.Component {
+export default class ShipDetailsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isLoading: true };
   }
 
   componentDidMount() {
-    return fetch("https://api.spacexdata.com/v3/launches/next")
+    const shipId = this.props.navigation.getParam("ship_id", "MRSTEVEN");
+
+    return fetch("https://api.spacexdata.com/v3/ships/" + shipId)
       .then(response => response.json())
       .then(responseJson => {
         this.setState(
@@ -33,13 +34,16 @@ export default class LaunchScreen extends React.Component {
         </View>
       );
     } else {
-      console.log(this.state.dataSource);
       return (
         <View
           style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <Text>Home!</Text>
-          <Text>{this.state.dataSource.mission_name}</Text>
+          <Image
+            source={{ uri: this.state.dataSource.image }}
+            style={{ width: 200, height: 200 }}
+          />
+
+          <Text>{this.state.dataSource.ship_name}</Text>
         </View>
       );
     }
