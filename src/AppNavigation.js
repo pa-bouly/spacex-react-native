@@ -20,8 +20,7 @@ import Icon from "react-native-vector-icons/Entypo";
 
 const PrimaryNav = createStackNavigator(
   {
-    LaunchScreen: { screen: LaunchScreen },
-    StarshipsScreen: { screen: StarshipsScreen }
+    LaunchScreen: { screen: LaunchScreen }
   },
   {
     headerMode: "none",
@@ -84,7 +83,7 @@ export default createAppContainer(
           return <Icon name={iconName} size={40} color={Colors.panther} />;
         }
       }),
-      initialRouteName: "Home",
+      initialRouteName: "Starships",
       tabBarOptions: {
         activeTintColor: Colors.fire,
         inactiveTintColor: Colors.panther
