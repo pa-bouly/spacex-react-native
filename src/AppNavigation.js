@@ -44,8 +44,8 @@ const StarshipsNav = createStackNavigator(
     ShipDetailsScreen: { screen: ShipDetailsScreen }
   },
   {
-    initialRouteName: "StarshipsScreen",
-    headerMode: "none"
+    initialRouteName: "StarshipsScreen"
+    // headerMode: "none"
   }
 );
 
@@ -92,7 +92,10 @@ export default createAppContainer(
 
       tabBarOptions: {
         activeTintColor: Colors.fire,
-        inactiveTintColor: Colors.panther
+        inactiveTintColor: Colors.panther,
+        style: {
+          backgroundColor: Colors.grey
+        }
       }
     }
   )

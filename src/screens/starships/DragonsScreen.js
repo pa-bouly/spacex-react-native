@@ -8,8 +8,15 @@ import {
   StyleSheet,
   ScrollView
 } from "react-native";
+import { Colors } from "../../themes";
 
 export default class DragonsScreen extends React.Component {
+  static navigationOptions = {
+    headerStyle: {
+      backgroundColor: Colors.grey
+    }
+  };
+
   constructor(props) {
     super(props);
     this.state = { isLoading: true };
@@ -59,12 +66,16 @@ export default class DragonsScreen extends React.Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flex: 1, padding: 20, backgroundColor: Colors.grey }}>
           <ActivityIndicator />
         </View>
       );
     } else {
-      return <ScrollView>{this.renderDragons()}</ScrollView>;
+      return (
+        <ScrollView style={{ flex: 1, backgroundColor: Colors.grey }}>
+          {this.renderDragons()}
+        </ScrollView>
+      );
     }
   }
 }

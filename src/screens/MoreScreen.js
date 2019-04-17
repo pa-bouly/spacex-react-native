@@ -9,6 +9,7 @@ import {
   StyleSheet,
   StatusBar
 } from "react-native";
+import { Colors } from "../themes";
 
 export default class MoreScreen extends React.Component {
   constructor(props) {
@@ -22,12 +23,16 @@ export default class MoreScreen extends React.Component {
   render() {
     if (this.state.isLoading) {
       return (
-        <View style={{ flex: 1, padding: 20 }}>
+        <View style={{ flex: 1, padding: 20, backgroundColor: Colors.grey }}>
           <ActivityIndicator />
         </View>
       );
     } else {
-      return <SafeAreaView />;
+      return (
+        <SafeAreaView style={{ flex: 1, backgroundColor: Colors.grey }}>
+          <Text>Soon ...</Text>
+        </SafeAreaView>
+      );
     }
   }
 }

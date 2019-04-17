@@ -2,6 +2,7 @@ import React from "react";
 import { Text, View, ActivityIndicator, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-navigation";
 import CountDown from "react-native-countdown-component";
+import { Colors } from "../themes";
 
 export default class LaunchScreen extends React.Component {
   constructor(props) {
@@ -34,7 +35,8 @@ export default class LaunchScreen extends React.Component {
             flex: 1,
             padding: 20,
             alignItems: "center",
-            justifyContent: "center"
+            justifyContent: "center",
+            backgroundColor: Colors.grey
           }}
         >
           <ActivityIndicator />
@@ -63,26 +65,12 @@ export default class LaunchScreen extends React.Component {
     }
   }
 }
-export const COLOR_PRIMARY = "#1d74f5";
-export const COLOR_BORDER = "#e1e5e8";
-export const COLOR_WHITE = "#fff";
-
-const colors = {
-  backgroundPrimary: COLOR_PRIMARY,
-  backgroundSecondary: "white",
-
-  textColorPrimary: "white",
-  textColorSecondary: COLOR_PRIMARY,
-
-  borderColorPrimary: COLOR_PRIMARY,
-  borderColorSecondary: COLOR_BORDER
-};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: COLOR_BORDER
+    backgroundColor: Colors.grey
   },
   title: {
     letterSpacing: 0,
