@@ -14,6 +14,8 @@ import DragonDetailsScreen from "./screens/starships/DragonDetailsScreen";
 import ShipsScreen from "./screens/starships/ShipsScreen";
 import ShipDetailsScreen from "./screens/starships/ShipDetailsScreen";
 
+import MoreScreen from "./screens/MoreScreen";
+
 import { Colors } from "./themes";
 
 import Icon from "react-native-vector-icons/Entypo";
@@ -42,7 +44,8 @@ const StarshipsNav = createStackNavigator(
     ShipDetailsScreen: { screen: ShipDetailsScreen }
   },
   {
-    initialRouteName: "StarshipsScreen"
+    initialRouteName: "StarshipsScreen",
+    headerMode: "none"
   }
 );
 
@@ -62,7 +65,8 @@ export default createAppContainer(
   createBottomTabNavigator(
     {
       Starships: StarshipsNav,
-      Home: PrimaryNav
+      Home: PrimaryNav,
+      More: MoreScreen
       //Others
     },
     {
@@ -83,7 +87,9 @@ export default createAppContainer(
           return <Icon name={iconName} size={40} color={Colors.panther} />;
         }
       }),
-      initialRouteName: "Starships",
+      initialRouteName: "Home",
+      headerMode: "none",
+
       tabBarOptions: {
         activeTintColor: Colors.fire,
         inactiveTintColor: Colors.panther

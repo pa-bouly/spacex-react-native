@@ -72,11 +72,6 @@ export default class RocketDetailsScreen extends React.Component {
       return (
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.container}>
-            {/* <StatusBar
-              translucent={true}
-              backgroundColor={"rgba(0, 0, 0, 0.3)"}
-              barStyle={"light-content"}
-            /> */}
             {this.gradient}
             <ScrollView
               style={styles.scrollview}
